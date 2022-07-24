@@ -246,9 +246,9 @@ public protocol TrimmerViewDelegate {
                 updateRightConstraint(with: translation)
             }
             layoutIfNeeded()
-            if let startTime = startTime, isLeftGesture {
+            if let startTime = startTimeOpt, isLeftGesture {
                 seek(to: startTime)
-            } else if let endTime = endTime {
+            } else if let endTime = endTimeOpt {
                 seek(to: endTime)
             }
             updateSelectedTime(stoppedMoving: false)
@@ -300,13 +300,23 @@ public protocol TrimmerViewDelegate {
     }
 
     /// The selected start time for the current asset.
-    public var startTime: CMTime? {
+    public var startTime: CMTime {
+        let startPosition = leftHandleView.frame.origin.x + assetPreview.contentOffset.x
+        return getTime(from: startPosition) ?? .zero
+    }
+    
+    public var startTimeOpt: CMTime? {
         let startPosition = leftHandleView.frame.origin.x + assetPreview.contentOffset.x
         return getTime(from: startPosition)
     }
 
     /// The selected end time for the current asset.
-    public var endTime: CMTime? {
+    public var endTime: CMTime {
+        let endPosition = rightHandleView.frame.origin.x + assetPreview.contentOffset.x - handleWidth
+        return getTime(from: endPosition) ?? .zero
+    }
+    
+    public var endTimeOpt: CMTime? {
         let endPosition = rightHandleView.frame.origin.x + assetPreview.contentOffset.x - handleWidth
         return getTime(from: endPosition)
     }
