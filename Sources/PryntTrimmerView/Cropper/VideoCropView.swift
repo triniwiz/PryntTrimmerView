@@ -14,6 +14,8 @@ private let margin: CGFloat = 16
 /// A view to preview a video inside an `AVPlayer`, with a scroll view to be able to select a specific area of the video.
 /// Simply set the `asset` property to load you video inside the view, and use the `getImageCropFrame` method to retrieve the
 /// selected frame of the video.
+@objcMembers
+@objc(VideoCropView)
 public class VideoCropView: UIView {
 
     let videoScrollView = VideoScrollView()

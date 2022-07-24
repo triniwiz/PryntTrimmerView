@@ -11,13 +11,16 @@ import AVFoundation
 
 /// A delegate to be notified of when the thumb position has changed. Useful to link an instance of the ThumbSelectorView to a
 /// video preview like an `AVPlayer`.
-public protocol ThumbSelectorViewDelegate: AnyObject {
+@objc(ThumbSelectorViewDelegate)
+public protocol ThumbSelectorViewDelegate {
     func didChangeThumbPosition(_ imageTime: CMTime)
 }
 
 /// A view to select a specific time of an `AVAsset`. It is composed of an asset preview within a scroll view, and a thumb view
 /// to select a precise time of the video. Set the `asset` property to load the video, and use the `selectedTime` property to
 // retrieve the exact frame of the asset that was selected.
+@objcMembers
+@objc(ThumbSelectorView)
 public class ThumbSelectorView: AVAssetTimeSelector {
 
     public var thumbBorderColor: UIColor = .white {

@@ -9,7 +9,8 @@
 import AVFoundation
 import UIKit
 
-public protocol TrimmerViewDelegate: AnyObject {
+@objc(TrimmerViewDelegate)
+public protocol TrimmerViewDelegate {
     func didChangePositionBar(_ playerTime: CMTime)
     func positionBarStoppedMoving(_ playerTime: CMTime)
 }
@@ -19,6 +20,8 @@ public protocol TrimmerViewDelegate: AnyObject {
 /// video preview, typically with an `AVPlayer`.
 /// Load the video by setting the `asset` property. Access the `startTime` and `endTime` of the view to get the selected time
 // range
+@objcMembers
+@objc(TrimmerView)
 @IBDesignable public class TrimmerView: AVAssetTimeSelector {
 
     // MARK: - Properties
