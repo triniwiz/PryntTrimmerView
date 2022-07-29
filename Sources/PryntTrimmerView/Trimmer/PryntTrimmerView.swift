@@ -123,6 +123,10 @@ public protocol TrimmerViewDelegate {
         leftConstraint?.isActive = true
         rightConstraint?.isActive = true
     }
+    
+    public func setBorderWidth(_ width: Float){
+        trimView.layer.borderWidth = width
+    }
 
     private func setupHandleView() {
 
