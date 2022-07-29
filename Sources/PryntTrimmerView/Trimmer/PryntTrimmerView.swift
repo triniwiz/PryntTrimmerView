@@ -125,7 +125,7 @@ public protocol TrimmerViewDelegate {
     }
     
     
-    public var borderWidth: Float {
+    public var borderWidth: CGFloat {
         get {
             return trimView.layer.borderWidth
         }
